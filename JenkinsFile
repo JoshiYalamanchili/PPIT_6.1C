@@ -1,0 +1,58 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+        stage('Unit and Integration Tests') {
+            steps {
+                sh 'mvn test'
+                sh 'mvn integration-test'
+            }
+        }
+        stage('Code Analysis') {
+            steps {
+                // Use SonarQube scanner to analyze code
+            }
+        }
+        stage('Security Scan') {
+            steps {
+                // Use OWASP ZAP to perform security scan
+            }
+        }
+        stage('Deploy to Staging') {
+            steps {
+                // Use AWS CLI or Jenkins AWS plugin to deploy
+            }
+        }
+        stage('Integration Tests on Staging') {
+            steps {
+                // Use Selenium for integration tests
+            }
+        }
+        stage('Deploy to Production') {
+            steps {
+                // Use AWS CLI or Jenkins AWS plugin to deploy
+            }
+        }
+    }
+   post {
+        failure {
+            // to send the email notifications if pipeline fails
+            emailext attachLog: true,
+                subject: "Pipeline Failure Notification",
+                   body: "The Jenkins pipeline triggered a failure.!",
+                     to: 'joshithayalamanchili1@gmail.com'
+        }
+        success {
+            // to send the email notifications if pipeline succeeds
+            emailext attachLog: true,
+                subject: "Pipeline Success Notification",
+                   body: "The Jenkins pipeline triggered a success!",
+                     to: 'joshithayalamanchili1@gmail.com'
+        }
+    }
+}
