@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building the code...'
+                echo 'Code is Being Built...'
             }
         }
         stage('Unit and Integration Tests') {
             steps {
-                echo 'Running unit tests...'
-                echo 'Running integration tests..'
+                echo 'Unit Tests are running...'
+                echo 'Integration tests are running...'
             }
         }
         stage('Code Analysis') {
@@ -20,22 +20,22 @@ pipeline {
         }
         stage('Security Scan') {
             steps {
-                echo 'Performing security scan...'
+                echo 'security scan is being performed...'
             }
         }
         stage('Deploy to Staging') {
             steps {
-                echo 'Deploying to staging environment...'
+                echo 'Deployed into staging environment...'
             }
         }
         stage('Integration Tests on Staging') {
             steps {
-                echo 'Running integration tests on staging environment...'
+                echo 'Integration tests are being ran on staging environment...'
             }
         }
         stage('Deploy to Production') {
             steps {
-                echo 'Deploying to production environment...'
+                echo 'Being deploying into production environment...'
             }
         }
     }
