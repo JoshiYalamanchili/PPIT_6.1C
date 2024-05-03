@@ -4,55 +4,55 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'mvn clean install'
+                echo 'Building the code...'
             }
         }
         stage('Unit and Integration Tests') {
             steps {
-                echo 'mvn test'
-                echo 'mvn integration-test'
+                echo 'Running unit tests...'
+                echo 'Running integration tests...'
             }
         }
         stage('Code Analysis') {
             steps {
-                // Use SonarQube scanner to analyze code
+                echo 'Performing code analysis...'
             }
         }
         stage('Security Scan') {
             steps {
-                // Use OWASP ZAP to perform security scan
+                echo 'Performing security scan...'
             }
         }
         stage('Deploy to Staging') {
             steps {
-                // Use AWS CLI or Jenkins AWS plugin to deploy
+                echo 'Deploying to staging environment...'
             }
         }
         stage('Integration Tests on Staging') {
             steps {
-                // Use Selenium for integration tests
+                echo 'Running integration tests on staging environment...'
             }
         }
         stage('Deploy to Production') {
             steps {
-                // Use AWS CLI or Jenkins AWS plugin to deploy
+                echo 'Deploying to production environment...'
             }
         }
     }
-   post {
+ post {
         failure {
             // to send the email notifications if pipeline fails
             emailext attachLog: true,
-                subject: "Pipeline Failure Notification",
-                   body: "The Jenkins pipeline triggered a failure.!",
-                     to: 'joshithayalamanchili1@gmail.com'
+                subject: "Failure of the Pipeline",
+                   body: "The jenkins pipeline resulted in a failure!",
+                     to: '7136tejasri@gmail.com'
         }
         success {
             // to send the email notifications if pipeline succeeds
             emailext attachLog: true,
-                subject: "Pipeline Success Notification",
-                   body: "The Jenkins pipeline triggered a success!",
-                     to: 'joshithayalamanchili1@gmail.com'
+                subject: "Success of the Pipeline",
+                   body: "The jenkins pipeline resulted in a success!",
+                     to: '7136tejasri@gmail.com'
         }
     }
 }
